@@ -1,0 +1,2 @@
+car=com.yummongi.app2.diCopy2.Truck
+engine=com.yummongi.app2.diCopy2.Engine
