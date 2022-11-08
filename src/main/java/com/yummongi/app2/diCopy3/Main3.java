@@ -48,13 +48,26 @@ class AppContext {
         }
     }
 
+    //byName
     Object getBean(String key){ return map.get(key);}
+
+    //byTyep
+    Object getBean(Class clazz) {
+        for (Object obj : map.values()) {
+            //obj가 매게변수 clazz의 객체이거나 자손이면 true
+            if (clazz.isInstance(obj)) {
+                return obj;
+            }
+        }return null;
+    }
 }
 public class Main3 {
     public static void main(String[] args) throws Exception {
         AppContext ac = new AppContext();
-        Car car = (Car) ac.getBean("car");
+        Car car = (Car) ac.getBean("car"); //byName으로 객체를 검색
+        Car car2 = (Car) ac.getBean(Car.class); //byType으로 객체를 검색
         System.out.println("car = " + car);
+        System.out.println("car2 = " + car2);
         Engine engine = (Engine) ac.getBean("engine");
         System.out.println("engine = " + engine);
     }
